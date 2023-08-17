@@ -1,28 +1,29 @@
-<script>
-	import Counter from './Counter.svelte';
-	import welcome from '$lib/images/svelte-welcome.webp';
-	import welcome_fallback from '$lib/images/svelte-welcome.png';
+<script context="module" lang="ts">
+	export const prerender = true;
+</script>
+
+<script lang="ts">
+	import Counter from '$lib/Counter.svelte';
 </script>
 
 <svelte:head>
 	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 
 <section>
 	<h1>
-		<span class="welcome">
+		<div class="welcome">
 			<picture>
-				<source srcset={welcome} type="image/webp" />
-				<img src={welcome_fallback} alt="Welcome" />
+				<source srcset="svelte-welcome.webp" type="image/webp" />
+				<img src="svelte-welcome.png" alt="Welcome" />
 			</picture>
-		</span>
+		</div>
 
 		to your new<br />SvelteKit app
 	</h1>
 
 	<h2>
-		try editing <strong>src/routes/+page.svelte</strong>
+		try editing <strong>src/routes/index.svelte</strong>
 	</h2>
 
 	<Counter />
@@ -34,7 +35,7 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		flex: 0.6;
+		flex: 1;
 	}
 
 	h1 {
@@ -42,7 +43,6 @@
 	}
 
 	.welcome {
-		display: block;
 		position: relative;
 		width: 100%;
 		height: 0;
